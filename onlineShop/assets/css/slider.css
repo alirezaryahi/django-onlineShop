@@ -1,0 +1,84 @@
+.MultiCarousel {
+    float: left;
+    overflow: hidden;
+    padding: 15px;
+    width: 100%;
+    position: relative;
+}
+
+.MultiCarousel .MultiCarousel-inner {
+    transition: 1s ease all;
+    float: left;
+}
+
+.MultiCarousel .MultiCarousel-inner .item {
+
+    float: left;
+}
+
+.MultiCarousel .MultiCarousel-inner .item > div {
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+    background: #f1f1f1;
+    color: #666;
+    height: 270px;
+    position: relative;
+}
+
+.MultiCarousel .leftLst, .MultiCarousel .rightLst {
+    position: absolute;
+    border-radius: 50%;
+    top: calc(50% - 20px);
+}
+
+.MultiCarousel .leftLst {
+    left: 0;
+}
+
+.MultiCarousel .rightLst {
+    right: 0;
+}
+
+.MultiCarousel .leftLst.over, .MultiCarousel .rightLst.over {
+    pointer-events: none;
+    background: #ccc;
+}
+
+.box-header .header .title {
+    font-size: 14px;
+    color: #2a2a2a;
+    font-weight: bold;
+    padding-bottom: 4px;
+    font-family: iranyekan,BYekan,IRANSans,Tahoma,Arial,'Times New Roman';
+}
+
+.box-header .header .subtitle, .PackageImage .text a {
+    font-size: 12px;
+    color: #9b9b9b;
+    font-family: iranyekan,BYekan,IRANSans,Tahoma,Arial,'Times New Roman';
+}
+.right-blue-border{
+    width: 3px;
+    height: 55px;
+    background-color: blue;
+}
+.MultiCarousel .MultiCarousel-inner .item > div a {
+    position: absolute;
+    bottom: 0;
+}
+.MultiCarousel .MultiCarousel-inner .item > div p {
+    color: blue;
+    font-family: iranyekan,BYekan,IRANSans,Tahoma,Arial,'Times New Roman';
+    font-size: 15px;
+    font-weight: bold;
+    position: absolute;
+    bottom: 37px;
+    left: 30%;
+}
+
+.MultiCarousel .MultiCarousel-inner .item > div i {
+    color: black;
+    font-family: iranyekan, BYekan, IRANSans, Tahoma, Arial, 'Times New Roman';
+    font-size: 14px;
+}
