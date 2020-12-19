@@ -1,0 +1,116 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Contact V1</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico' %}"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main_contact_us.css' %}">
+    <!--===============================================================================================-->
+</head>
+<body>
+
+<div class="contact1">
+
+    <div class="container-contact1 pos-relative">
+        <div class="pos-absolute" style="top: 30px;left: 5%">
+            <a href="/" class="HiddenLink">
+                <img src="{% static 'images/home-black.png' %}"/>
+            </a>
+        </div>
+        <div class="contact1-pic js-tilt" data-tilt>
+            <img src="{% static 'images/img-01.png' %}" alt="IMG">
+        </div>
+
+        <form class="contact1-form validate-form" method="post" style="direction: rtl">
+            {% csrf_token %}
+            <b>
+                <span class="contact1-form-title">
+					پیام کاربر
+				</span>
+            </b>
+
+            <div class="wrap-input1 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                {#					<input class="input1" type="text" name="email" placeholder="Email">#}
+                {{ form.title }}
+                <span class="shadow-input1"></span>
+            </div>
+
+            <div class="wrap-input1 validate-input" data-validate="Subject is required">
+                {#					<input class="input1" type="text" name="subject" placeholder="Subject">#}
+                {{ form.email }}
+                <span class="shadow-input1"></span>
+            </div>
+
+            <div class="wrap-input1 validate-input" data-validate="Message is required">
+                {#					<textarea class="input1" name="message" placeholder="Message"></textarea>#}
+                {{ form.message }}
+                <span class="shadow-input1"></span>
+            </div>
+
+            <div class="container-contact1-form-btn">
+                <button type="submit" class="contact1-form-btn">
+                    <b>
+                        <span>
+                            <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+							ارسال پیام
+
+						</span>
+                    </b>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<!--===============================================================================================-->
+<script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+<script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+<script src="{% static 'vendor/select2/select2.min.js' %}"></script>
+<!--===============================================================================================-->
+<script src="{% static 'vendor/tilt/tilt.jquery.min.js' %}"></script>
+<script>
+    $('.js-tilt').tilt({
+        scale: 1.1
+    })
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'UA-23581568-13');
+</script>
+
+<!--===============================================================================================-->
+<script src="{% static 'js/main_contact_us.js' %}"></script>
+
+</body>
+</html>
