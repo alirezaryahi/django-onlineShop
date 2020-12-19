@@ -59,7 +59,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'Shop.urls'
+ROOT_URLCONF = 'onlineShop.urls'
 
 TEMPLATES = [
     {
@@ -77,7 +77,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'Shop.wsgi.application'
+WSGI_APPLICATION = 'onlineShop.wsgi.application'
 
 # AUTH_USER_MODEL = 'Account.User'
 
