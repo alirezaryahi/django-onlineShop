@@ -1,0 +1,221 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <br>
+    <h4 class="title text-center" style="color: #21409a">ثبت نام در کتاب فروشی آنلاین</h4>
+
+    <div class="LoginWrapper">
+        <div class="LoginPanel">
+            <form method="post">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="form-group col-sm-12">
+                        <div class="input-group">
+                            <span class="input-group-prepend"><span class="input-group-text"><img
+                                    src="{% static 'images/username.svg' %}" alt="نام کاریری"></span></span>
+                            {{ form.username }}
+
+                        </div>
+                        <span class="text-danger field-validation-valid" data-valmsg-for="Input.FirstName"
+                              data-valmsg-replace="true">
+                        {% for msg in form.username.errors %}
+                            <p class="text-danger field-validation-valid">{{ msg }}</p>
+                            <br>
+                        {% endfor %}
+                        </span>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="form-group col-sm-12">
+                        <div class="input-group">
+                            <span class="input-group-prepend"><span class="input-group-text"><img
+                                    src="{% static 'images/contact.svg' %}" alt="نام"></span></span>
+                            {{ form.first_name }}
+
+                            {{ form.last_name }}
+                        </div>
+                        <span class="text-danger field-validation-valid" data-valmsg-for="Input.FirstName"
+                              data-valmsg-replace="true">
+                            {% for msg in form.first_name.errors %}
+                                {{ msg }}
+                                <br>
+                            {% endfor %}
+                        </span>
+                        <span class="text-danger field-validation-valid" data-valmsg-for="Input.LastName"
+                              data-valmsg-replace="true">
+                            {% for msg in form.last_name.errors %}
+                                {{ msg }}
+                                <br>
+                            {% endfor %}
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-sm-12">
+                        <div class="input-group">
+                            <span class="input-group-prepend"><span class="input-group-text"><img
+                                    src="{% static 'images/mobile-l.svg' %}" alt="موبایل"></span></span>
+                            {{ form.phone }}
+                        </div>
+                        <span class="text-danger field-validation-valid" data-valmsg-for="Input.PhoneNumber"
+                              data-valmsg-replace="true">
+                            {% for msg in form.phone.errors %}
+                                {{ msg }}
+                                <br>
+                            {% endfor %}
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-sm-12">
+                        <div class="input-group">
+                            <span class="input-group-prepend"><span class="input-group-text"><img
+                                    src="{% static 'images/email.svg' %}" alt="ایمیل"></span></span>
+                            {{ form.email }}
+                        </div>
+                        <span class="text-danger field-validation-valid" data-valmsg-for="Input.Email"
+                              data-valmsg-replace="true">
+                            {% for msg in form.email.errors %}
+                                {{ msg }}
+                                <br>
+                            {% endfor %}
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-sm-12">
+                        <div class="input-group">
+                            <span class="input-group-prepend"><span class="input-group-text"><img
+                                    src="{% static 'images/password.svg' %}" alt="رمز عبور"></span></span>
+                            {{ form.password }}
+                        </div>
+                        <span class="text-danger field-validation-valid" data-valmsg-for="Input.Password"
+                              data-valmsg-replace="true">
+                            {% for msg in form.password.errors %}
+                                {{ msg }}
+                                <br>
+                            {% endfor %}
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-sm-12">
+                        <div class="input-group">
+                            <span class="input-group-prepend"><span class="input-group-text"><img
+                                    src="{% static 'images/password.svg' %}" alt="تکرار رمز عبور"></span></span>
+                            {{ form.re_password }}
+                        </div>
+                        <span class="text-danger field-validation-valid" data-valmsg-for="Input.ConfirmPassword"
+                              data-valmsg-replace="true">
+                            {% for msg in form.re_password.errors %}
+                                {{ msg }}
+                                <br>
+                            {% endfor %}
+                        </span>
+                    </div>
+                </div>
+                <input class="btn btn-block btn-success" type="submit" value="ثبت نام">
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+
+{#<form method="post" action="/Identity/Account/Register" novalidate="novalidate">#}
+{##}
+{#                <div class="row">#}
+{#                    <div class="form-group col-sm-12">#}
+{#                        <div class="input-group">#}
+{#                            <span class="input-group-prepend"><span class="input-group-text"><img#}
+{#                                    src="{% static 'images/username.svg' %}" alt="نام کاریری"></span></span>#}
+{#                            <input class="form-control ltr" placeholder="نام کاربری خود را وارد نمایید" type="text"#}
+{#                                   data-val="true" data-val-required="لطفاً نام کاربری را وارد نمایید."#}
+{#                                   id="Input_Username" name="Input.Username" value="">#}
+{#                        </div>#}
+{#                        <span class="text-danger field-validation-valid" data-valmsg-for="Input.Username"#}
+{#                              data-valmsg-replace="true"></span>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="row">#}
+{#                    <div class="form-group col-sm-12">#}
+{#                        <div class="input-group">#}
+{#                            <span class="input-group-prepend"><span class="input-group-text"><img#}
+{#                                    src="{% static 'images/contact.svg' %}" alt="نام"></span></span>#}
+{#                            <input class="form-control NoRadius" placeholder="نام ..."#}
+{#                                   style="width:calc(50% - 50px); flex: none" type="text" data-val="true"#}
+{#                                   data-val-required="لطفاً نام را وارد نمایید." id="Input_FirstName"#}
+{#                                   name="Input.FirstName" value="">#}
+{#                            <input class="form-control" placeholder="نام خانوادگی ..." type="text" data-val="true"#}
+{#                                   data-val-required="لطفاً نام خانوادگی را وارد نمایید." id="Input_LastName"#}
+{#                                   name="Input.LastName" value="">#}
+{#                        </div>#}
+{#                        <span class="text-danger field-validation-valid" data-valmsg-for="Input.FirstName"#}
+{#                              data-valmsg-replace="true"></span>#}
+{#                        <span class="text-danger field-validation-valid" data-valmsg-for="Input.LastName"#}
+{#                              data-valmsg-replace="true"></span>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="row">#}
+{#                    <div class="form-group col-sm-12">#}
+{#                        <div class="input-group">#}
+{#                            <span class="input-group-prepend"><span class="input-group-text"><img#}
+{#                                    src="{% static 'images/mobile-l.svg' %}" alt="موبایل"></span></span>#}
+{#                            <input class="form-control ltr" placeholder="شماره موبایل ..." type="text" data-val="true"#}
+{#                                   data-val-required="لطفاً شماره همراه را وارد نمایید." id="Input_PhoneNumber"#}
+{#                                   name="Input.PhoneNumber" value="">#}
+{#                        </div>#}
+{#                        <span class="text-danger field-validation-valid" data-valmsg-for="Input.PhoneNumber"#}
+{#                              data-valmsg-replace="true"></span>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="row">#}
+{#                    <div class="form-group col-sm-12">#}
+{#                        <div class="input-group">#}
+{#                            <span class="input-group-prepend"><span class="input-group-text"><img#}
+{#                                    src="{% static 'images/email.svg' %}" alt="ایمیل"></span></span>#}
+{#                            <input class="form-control ltr" placeholder="ایمیل ..." type="email" data-val="true"#}
+{#                                   data-val-email="لطفاً آدرس ایمیل را با فرمت درست وارد نمایید."#}
+{#                                   data-val-required="لطفاً آدرس ایمیل را وارد نمایید." id="Input_Email"#}
+{#                                   name="Input.Email" value="">#}
+{#                        </div>#}
+{#                        <span class="text-danger field-validation-valid" data-valmsg-for="Input.Email"#}
+{#                              data-valmsg-replace="true"></span>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="row">#}
+{#                    <div class="form-group col-sm-12">#}
+{#                        <div class="input-group">#}
+{#                            <span class="input-group-prepend"><span class="input-group-text"><img#}
+{#                                    src="{% static 'images/password.svg' %}" alt="رمز عبور"></span></span>#}
+{#                            <input class="form-control ltr" placeholder="رمز عبور ..." type="password" data-val="true"#}
+{#                                   data-val-length="رمز عبور باید بیشتر از 6 کاراکتر باشد." data-val-length-max="100"#}
+{#                                   data-val-length-min="6" data-val-required="لطفاً رمز عبور را وارد نمایید."#}
+{#                                   id="Input_Password" maxlength="100" name="Input.Password">#}
+{#                        </div>#}
+{#                        <span class="text-danger field-validation-valid" data-valmsg-for="Input.Password"#}
+{#                              data-valmsg-replace="true"></span>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="row">#}
+{#                    <div class="form-group col-sm-12">#}
+{#                        <div class="input-group">#}
+{#                            <span class="input-group-prepend"><span class="input-group-text"><img#}
+{#                                    src="{% static 'images/password.svg' %}" alt="تکرار رمز عبور"></span></span>#}
+{#                            <input class="form-control ltr" placeholder="تکرار رمز عبور ..." type="password"#}
+{#                                   data-val="true" data-val-equalto="رمز عبور و تکرار آن یکسان نیستند."#}
+{#                                   data-val-equalto-other="*.Password" id="Input_ConfirmPassword"#}
+{#                                   name="Input.ConfirmPassword">#}
+{#                        </div>#}
+{#                        <span class="text-danger field-validation-valid" data-valmsg-for="Input.ConfirmPassword"#}
+{#                              data-valmsg-replace="true"></span>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="PrimaryButton RegisterButton">ثبت نام</div>#}
+{#                <input name="__RequestVerificationToken" type="hidden"#}
+{#                       value="CfDJ8A3LUwby9rZKjoSdO7sds7zkHtz98PXKFNnbFnoMCvitFu43UkaX5749Z9CwYCbII6aBRrlj5TxRvHGEBx6IB2MYPZ6WRQCfzjS_j6fd8S9XYIL6_2oOirhLfL8hRALO8Yntm75wHSIHpZmeBg5Nnus">#}
+{#            </form>#}

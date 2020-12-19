@@ -1,0 +1,56 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <br>
+    <h4 class="title text-center" style="color: #21409a">ورود به کتاب فروشی آنلاین</h4>
+    <br><br>
+    <div class="LoginWrapper w-25 m-auto bg-white">
+        <div class="LoginPanel">
+            <form id="LoginForm" method="post" novalidate="novalidate">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="form-group col-sm-12">
+                        <span class="text-danger field-validation-valid" data-valmsg-for="Input.FirstName"
+                              data-valmsg-replace="true">
+                        {% for msg in form.username.errors %}
+                            <p class="text-danger field-validation-valid d-block">{{ msg }}</p>
+                            <br>
+                        {% endfor %}
+                        </span>
+                        <div class="input-group">
+                            <span class="input-group-prepend"><span class="input-group-text"><img
+                                    src="{% static 'images/username.svg' %}" alt="نام کاریری"></span></span>
+                            {{ form.username }}
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-sm-12">
+                        <div class="input-group">
+                            <span class="input-group-prepend"><span class="input-group-text"><img
+                                    src="{% static 'images/password.svg' %}" alt="رمز عبور"></span></span>
+                            {{ form.password }}
+                        </div>
+                    </div>
+                </div>
+                <input class="btn btn-block btn-success" type="submit" value="ورود">
+            </form>
+        </div>
+        <div class="BottomPart bg-white">
+            <div>
+                هنوز عضو کتاب فروشی آنلاین نشده‌اید؟
+            </div>
+            <a class="HiddenLink" href="/Identity/Account/Register">
+                <div class="PrimaryButton Alternate col-sm-3 ml-auto mr-auto mt-2 mb-2">
+                    <a href="register">ثبت نام</a>
+                </div>
+            </a>
+        </div>
+    </div>
+    <br>
+    <br>
+
+{% endblock %}

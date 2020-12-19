@@ -1,0 +1,80 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="container d-flex mt-5 mb-5">
+        <div class="col-sm-4 mt-3">
+            {% include 'siderBar.html' %}
+        </div>
+        <div class="col-sm-8 mt-3">
+            <form method="post" class="w-50 mr-auto ml-auto">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="form-group col-sm-12">
+                        <div class="input-group">
+                            <span class="input-group-prepend"><span class="input-group-text"><img
+                                    src="{% static 'images/contact.svg' %}" alt="نام"></span>
+                            </span>
+                            {{ form.first_name }}
+
+                            {{ form.last_name }}
+                        </div>
+                        <span class="text-danger field-validation-valid" data-valmsg-for="Input.FirstName"
+                              data-valmsg-replace="true">
+                            {% for msg in form.first_name.errors %}
+                                {{ msg }}
+                                <br>
+                            {% endfor %}
+                        </span>
+                        <span class="text-danger field-validation-valid" data-valmsg-for="Input.LastName"
+                              data-valmsg-replace="true">
+                            {% for msg in form.last_name.errors %}
+                                {{ msg }}
+                                <br>
+                            {% endfor %}
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-sm-12">
+                        <div class="input-group">
+                            <span class="input-group-prepend"><span class="input-group-text"><img
+                                    src="{% static 'images/mobile-l.svg' %}" alt="موبایل"></span></span>
+                            {{ form.phone }}
+                        </div>
+                        <span class="text-danger field-validation-valid" data-valmsg-for="Input.PhoneNumber"
+                              data-valmsg-replace="true">
+                            {% for msg in form.phone.errors %}
+                                {{ msg }}
+                                <br>
+                            {% endfor %}
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-sm-12">
+                        <div class="input-group">
+                            <span class="input-group-prepend"><span class="input-group-text"><img
+                                    src="{% static 'images/email.svg' %}" alt="ایمیل"></span></span>
+                            {{ form.email }}
+                        </div>
+                        <span class="text-danger field-validation-valid" data-valmsg-for="Input.Email"
+                              data-valmsg-replace="true">
+                            {% for msg in form.email.errors %}
+                                {{ msg }}
+                                <br>
+                            {% endfor %}
+                        </span>
+                    </div>
+                </div>
+                <input class="btn btn-block btn-success" type="submit" value="ویرایش">
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+{% endblock %}

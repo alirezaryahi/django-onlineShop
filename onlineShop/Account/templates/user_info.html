@@ -1,0 +1,25 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+    <div class="container d-flex mt-5 mb-5">
+        <div class="col-sm-4 mt-3">
+            {% include 'siderBar.html' %}
+        </div>
+
+        <div class="col-sm-8 mt-3">
+            <div class="card mr-auto ml-auto" style="width: 18rem;">
+                <img src="{% static 'images/default_image.png' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-center">{{ user_detail.username }}</h5>
+                    <p class="card-text text-center">{{ user_detail.first_name }} {{ user_detail.last_name }}</p>
+                    <p class="card-text text-center">{{ user_detail.email }}</p>
+                    <p class="card-text text-center">{{ user_phone.phone }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

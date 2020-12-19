@@ -1,0 +1,22 @@
+<div class="box ProfileMenu p-0">
+    <div class="Item {% if request.path == '/user/info' %}Active{% endif %}">
+        <a class="HiddenLink" href="/user/info">
+            پروفایل من
+        </a>
+    </div>
+    <div class="Item {% if request.path == '/user/edit' %}Active{% endif %}">
+        <a class="HiddenLink" href="/user/edit">
+            ویرایش پروفایل
+        </a>
+    </div>
+    <div class="Item {% if request.path == '/user/resetPassword' %}Active{% endif %}">
+        <a class="HiddenLink" href="/user/resetPassword">
+            ویرایش پسورد
+        </a>
+    </div>
+    <div class="Item">
+        <a class="HiddenLink" href="/logout">
+            خروج
+        </a>
+    </div>
+</div>
