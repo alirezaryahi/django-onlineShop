@@ -1,0 +1,38 @@
+{% load static %}
+{% load render_partial %}
+
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-37489221-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-37489221-1');
+    </script>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="keywords"
+          content="شهر کتاب، &#x62E;&#x631;&#x6CC;&#x62F; &#x6A9;&#x62A;&#x627;&#x628;&#x60C; &#x62E;&#x631;&#x6CC;&#x62F; &#x627;&#x6CC;&#x646;&#x62A;&#x631;&#x646;&#x62A;&#x6CC; &#x6A9;&#x62A;&#x627;&#x628;&#x60C; &#x62E;&#x631;&#x6CC;&#x62F; &#x622;&#x646;&#x644;&#x627;&#x6CC;&#x646; &#x6A9;&#x62A;&#x627;&#x628;&#x60C;  شهر کتاب آنلاین"/>
+    <title>&#x634;&#x647;&#x631; &#x6A9;&#x62A;&#x627;&#x628; &#x622;&#x646;&#x644;&#x627;&#x6CC;&#x646; - شهر کتاب
+        آنلاین</title>
+    {% include 'shared/_Header.html' %}
+
+
+</head>
+<body>
+
+{% render_partial 'header' %}
+{% block content %}{% endblock %}
+{% include 'shared/Footer.html' %}
+{% include 'shared/_Footer.html' %}
+
+</body>
+</html>

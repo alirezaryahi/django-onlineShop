@@ -1,0 +1,63 @@
+{% extends 'shared/base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+    {% if search %}
+        <div class="row container mr-auto ml-auto bg-white">
+            {% for product in search %}
+                <div class="col-4" style="display: inline-block">
+                    <div class="ProductWrapper">
+                        <div class="body">
+                            <div class="book-wrap">
+                                <img class="book-image" src="{{ product.image.url }}">
+                                <div class="book">
+                                    <div class="inner-shadow"></div>
+                                </div>
+                            </div>
+                            <div class="text">
+                                {{ product.title }}
+                            </div>
+                            <div class="price">
+                                {{ product.price }} <span class="Rial">ریال</span>
+                            </div>
+                            <a class="btn btn-block btn-success"
+                               href="{% if product.select == 'book' %}books/{{ product.id }}/{{ product.title.split|join:"_" }}{% endif %}
+                                                {% if product.select == 'effect' %}arts/{{ product.id }}/{{ product.title.split|join:"_" }}{% endif %}
+                                                {% if product.select == 'stationery' %}stationeries/{{ product.id }}/{{ product.title.split|join:"_" }}{% endif %}">مشاهده</a>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="row container mr-auto ml-auto bg-white"><br><br><br><br></div>
+    {% endif %}
+    <br><br>
+
+    <div class="d-flex">
+        <div class="col-sm-12 text-center">
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                    <li><a href="?page={{ page_obj.previous_page_number }}">قبلی</a></li>
+                {% endif %}
+
+                {% for page in paginator.page_range %}
+                    {% if page == page_obj.number %}
+                        <li class="active"><a href="?page={{ page }}">{{ page }}</a></li>
+                    {% else %}
+                        <li><a href="?page={{ page }}">{{ page }}</a></li>
+                    {% endif %}
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                    <li><a href="?page={{ page_obj.next_page_number }}">بعدی</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+
+{% endblock %}

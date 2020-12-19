@@ -1,0 +1,174 @@
+{% load static %}
+
+<header class=" sticky-top">
+    <div class=" mb-3">
+        <nav class="Header navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow">
+            <div class="container">
+                <div class="row col-12 p-0 m-0">
+                    <div class="col-md-3 col-sm-12 text-center Logo">
+                        <a class="navbar-brand" href="/">
+                            <img class="Logo" src="{% static 'images/books_online.jpg' %}" alt="شهر کتاب آنلاین"
+                                 title="شهر کتاب آنلاین"/>
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-sm-12 pl-4 pr-4 pt-md-3">
+                        {% include 'shared/search_input.html' %}
+                    </div>
+                    <div class="col-md-3 col-sm-12 text-center text-nowrap pt-md-3">
+                        <div class="d-inline-flex flex-row-reverse">
+                            <div class="navbar-nav border-right-dashed flex-row SearchToggle">
+                                <img src="/images/Icons/search.svg" alt="جستجو"/>
+                            </div>
+                            <ul class="navbar-nav">
+                                {% if not request.user.is_authenticated %}
+                                    <li class="nav-item text-center LoginTrigger">
+                                        <img src="{% static 'images/user.png' %}" alt="ورود/ثبت نام"/>
+                                        <a class="d-block text-dark" href="/login">ورود / ثبت نام</a>
+                                    </li>
+                                {% else %}
+                                    <li class="nav-item text-center LoginTrigger">
+                                        <img src="{% static 'images/profile.png' %}" alt="حساب کاربری"/>
+                                        <a class="d-block text-dark" href="/user/info">حساب کاربری
+                                            {% if request.user.is_authenticated %}
+                                                <b>( {{ request.user.username }} )</b> {% endif %}</a>
+                                    </li>
+                                    <li class="nav-item text-center LoginTrigger mr-4">
+                                        <img src="{% static 'images/exit.png' %}" alt="خروج"/>
+                                        <a class="d-block text-dark" href="/logout">خروج</a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+
+                            {% if request.user.is_authenticated %}
+                                <ul class="navbar-nav flex-grow-1 border-left-dashed">
+                                    <li class="nav-item">
+                                        <div class="ShoppingCartWrapper">
+                                            <div class="ShoppingCartTrigger text-center">
+                                                <img src="{% static 'images/basket.png' %}" alt="سبد خرید"/>
+                                                <a href="/openOrder" class="text-center d-block text-dark">سبد خرید</a>
+                                            </div>
+
+                                        </div>
+                                    </li>
+                                </ul>
+                            {% endif %}
+
+                            <a class="navbar-brand" href="/">
+                                <img class="SmallLogo" src="/images/Logo-s.png" alt="شهر کتاب آنلاین"
+                                     title="شهر کتاب آنلاین"/>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <nav class="TopBar navbar navbar-expand-md navbar-dark">
+            <button class="navbar-toggler mt-1 mr-4" type="button" data-toggle="collapse" data-target="#navbar"
+                    aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="container">
+                <div class="row position-relative h-100 TopBarMenu collapse navbar-collapse m-0" id="navbar">
+                    <div class="TopBarButton col-md nav-item">
+                        <img src="{% static 'images/home.png' %}"/>
+                        <a href="/" class="HiddenLink">صفحه اصلی</a>
+                    </div>
+                    <div class="TopBarButton col-md nav-item">
+                        <img src="{% static 'images/book.png' %}"/>
+                        <a href="/books/all" class="HiddenLink">کتاب</a>
+                        <div class="ProductTypeCategories row" data-id="1">
+                            <div class="col-sm-3">
+                                {% for cat in category %}
+                                    <div class="Category">
+                                        <img src="{% static 'images/left-arrow.png' %}" alt="."/>
+                                        <a href="/books/{{ cat.title.split|join:"-" }}"
+                                           class="HiddenLink">{{ cat.title }}</a>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            {% if category1 %}
+                                <div class="col-sm-3">
+                                    {% for cat in category1 %}
+                                        <div class="Category">
+                                            <img src="{% static 'images/left-arrow.png' %}" alt="."/>
+                                            <a href="/books/{{ cat.title.split|join:"-" }}"
+                                               class="HiddenLink">{{ cat.title }}</a>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                            <img src="{% static 'images/Book.webp' %}"
+                                 alt="&#x646;&#x648;&#x634;&#x62A; &#x627;&#x641;&#x632;&#x627;&#x631;"
+                                 class="ProductTypeImage"/>
+                        </div>
+                    </div>
+                    <div class="TopBarButton col-md nav-item">
+                        <img src="{% static 'images/pencil.png' %}"/>
+                        <a href="/stationeries/all" class="HiddenLink">&#x646;&#x648;&#x634;&#x62A;
+                            &#x627;&#x641;&#x632;&#x627;&#x631;</a>
+                        <div class="ProductTypeCategories row" data-id="2">
+                            <div class="col-sm-3">
+                                {% for gr in group %}
+                                    <div class="Category">
+                                        <img src="{% static 'images/left-arrow.png' %}" alt="."/>
+                                        <a href="/stationeries/{{ gr.title.split|join:"-" }}"
+                                           class="HiddenLink">{{ gr.title }}</a>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            {% if group1 %}
+                                <div class="col-sm-3">
+                                    {% for gr in group1 %}
+                                        <div class="Category">
+                                            <img src="{% static 'images/left-arrow.png' %}" alt="."/>
+                                            <a href="/stationeries/{{ gr.title.split|join:"-" }}"
+                                               class="HiddenLink">{{ gr.title }}</a>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                            <img src="{% static 'images/Stationary.webp' %}"
+                                 alt="&#x646;&#x648;&#x634;&#x62A; &#x627;&#x641;&#x632;&#x627;&#x631;"
+                                 class="ProductTypeImage"/>
+                        </div>
+                    </div>
+                    <div class="TopBarButton col-md nav-item">
+                        <img src="{% static 'images/film.png' %}"/>
+                        <a href="/arts/all" class="HiddenLink">محصولات فرهنگی</a>
+                        <div class="ProductTypeCategories row" data-id="4">
+                            <div class="col-sm-3">
+                                {% for sub in subject %}
+                                    <div class="Category">
+                                        <img src="{% static 'images/left-arrow.png' %}" alt="."/>
+                                        <a href="/arts/{{ sub.title.split|join:"-" }}"
+                                           class="HiddenLink">{{ sub.title }}</a>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            {% if subject1 %}
+                                <div class="col-sm-3">
+                                    {% for sub in subject1 %}
+                                        <div class="Category">
+                                            <img src="{% static 'images/left-arrow.png' %}" alt="."/>
+                                            <a href="/arts/{{ sub.title.split|join:"-" }}"
+                                               class="HiddenLink">{{ sub.title }}</a>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                            <img src="{% static 'images/Cultural.webp' %}"
+                                 alt="&#x645;&#x62D;&#x635;&#x648;&#x644;&#x627;&#x62A; &#x641;&#x631;&#x647;&#x646;&#x6AF;&#x6CC;"
+                                 class="ProductTypeImage"/>
+                        </div>
+                    </div>
+                    <div class="TopBarButton col-md nav-item">
+                        <img src="{% static 'images/contact.png' %}"/>
+                        <a href="/contactUs" class="HiddenLink">ارتباط با ما</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+    </div>
+</header>

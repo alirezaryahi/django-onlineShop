@@ -1,0 +1,108 @@
+{% load static %}
+
+
+<footer class="border-top footer">
+    <div class="links">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="title">
+                        <img src="{% static 'images/Logo-white.png' %}" alt="شهر کتاب آنلاین"/>
+                        درباره شهر کتاب آنلاین
+                    </div>
+                    <ul>
+                        <li class="text-justify mb-5">
+                            در فرصت‌های اندک میان هیاهوی روزانه، زمانی که می‌شود استراحت کوتاهی کرد، یک فنجان چای نوشید
+                            و به موسیقی دلخواه خود گوش کرد. زمانیست که می‌شود در فضای مجازی گشتی زد، اخبار روز را مرور
+                            کرد و بر روی عکس‌ها و حرف‌های دوستان نظر داد. زمانیست که می‌توان وارد این فروشگاه شد، کتابی
+                            سفارش داد و در فاصله‌ای کوتاه آن را تحویل گرفت. حال دیگر این نوای موسیقی و عطر چای شماست که
+                            به فروشگاه کتاب ما حال و هوایی دیگر می‌دهد.
+                            <a class="blue" href="/Home/AboutUs">بیشتر</a>
+                        </li>
+                        <li class="d-flex">
+                            <a href="" target="_blank" title="فیسبوک">
+                                <div class="social">
+                                    <img src="{% static 'images/facebook.png' %}" alt="">
+                                </div>
+                            </a>
+                            <a href="" target="_blank" title="تلگرام">
+                                <div class="social">
+                                    <img src="{% static 'images/telegram.png' %}" alt="">
+                                </div>
+                            </a>
+                            <a href="" target="_blank" title="اینستاگرام">
+                                <div class="social">
+                                    <img src="{% static 'images/instagram.png' %}" alt="">
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <div class="title">
+                        حساب کاربری
+                    </div>
+                    <ul>
+                        {% if not request.user.is_authenticated %}
+                            <li><a href="login">ورود</a></li>
+                            <li><a href="register">ثبت نام</a></li>
+                        {% endif %}
+                        <li><a href="/Wall">دیوار شهر کتاب</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <div class="title">
+                        راهنمای استفاده
+                    </div>
+                    <ul>
+                        <li><a href="/Home/ShoppingGuide">راهنمای خرید</a></li>
+                        <li><a href="/Home/WallGuide">راهنمای دیوار شهر کتاب</a></li>
+                        <li><a href="/Home/WallRules">قوانین دیوار شهر کتاب</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <div class="title">
+                        تماس با ما
+                    </div>
+                    <ul>
+                        <li>
+                            <img src="{% static 'images/location.png' %}" alt="نشانی" class="icon"/><a
+                                href="https://goo.gl/maps/CN3hMn6B5mUHqDbN9" target="_blank">تهران، خیابان ملاصدرا،
+                            خیابان گلدشت، کوچه گلدشت یکم، پلاک ۱۴، کد پستی 1993643651</a>
+                        </li>
+                        <li>
+                            <img src="{% static 'images/phone.png' %}" alt="تلفن" class="icon"/>پشتیبانی: <span
+                                dir="ltr"><a
+                                href="tel:+98-21-88210852">021-88210852</a></span>
+                        </li>
+                        <li>
+                            <img src="{% static 'images/sms.png' %}" alt="شماره پیامک" class="icon"/><a
+                                href="sms:30009010">30009010</a>
+                        </li>
+                        <li>
+                            <img src="{% static 'images/email.png' %}" alt="ایمیل" class="icon"/><a
+                                href=mailto:info@shahreketabonline.com>info@shahreketabonline.com</a>
+                        </li>
+                        <li class="mt-5">
+                            <div class="namad">
+                                <img src='{% static 'images/logo.png' %}'
+                                     alt='نماد اعتماد الکترونیکی'
+                                     id='ee5nMOxGaZWD08vy' style='cursor:pointer' width="125"/>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 p-0">
+                    تمامی حقوق مادی و معنوی این وب سایت متعلق به "شهر کتاب آنلاین" است. بر اساس ماده بیست و سه قانون
+                    حمایت از حقوق مولفان، کلیه آثار ارائه شده در سایت با مجوز از صاحب امتیاز اثر می‌باشد.‏
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

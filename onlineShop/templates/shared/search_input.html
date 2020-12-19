@@ -1,0 +1,10 @@
+{% load static %}
+
+<div class="Search">
+    <img src="{% static 'images/search.png' %}" alt="?" class="Icon"/>
+    <form action="/search">
+        <input type="text" class="form-control search-box" id="SearchBox"
+               placeholder="عبارت جستجو را وارد نمایید (در تمام محصولات)..." value="{{request.GET.q}}" name="q"/>
+    </form>
+    <div class="SearchResult"></div>
+</div>
