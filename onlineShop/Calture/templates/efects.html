@@ -1,0 +1,96 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <div class="container MainDiv">
+        <div class="d-flex">
+            <div class="col p-sm-0">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="box">
+                            {% if 'arts/all' in request.path %}
+                                <div class="title small p-0">
+                                    جستجو در تمام هنر ها
+                                </div>
+                            {% else %}
+                                <div class="title small p-0">
+                                    جستجو در هنرهای {{ category }}
+                                </div>
+                            {% endif %}
+                            <div class="Search p-0">
+                                <img src="{% static 'images/search.png' %}" alt="?" class="Icon">
+                                <form action="{% if 'arts/all' in request.path %} /searchCalture=all {% else %} /searchCalture={{ category }} {% endif %}">
+                                    <input type="text" class="form-control search-box" id="SearchBox"
+                                           placeholder="عبارت جستجو را وارد نمایید..."
+                                           value="{{ request.GET.ef }}" name="ef"/>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div id="ProductsTable" class="ProductsTable">
+                            <div class="box without-head p-0">
+                                <div class="row">
+
+                                    {% for efect in page_obj %}
+                                        <div class="col-4 p-0" style="display: inline-block">
+                                            <div class="ProductWrapper">
+                                                <div class="body">
+                                                    <a href="/arts/{{ efect.id }}/{{ efect.title.split|join:"_" }}">
+
+                                                        <div class="book-wrap">
+                                                            <img class="book-image" src="{{ efect.image.url }}">
+                                                            <div class="book">
+                                                                <div class="inner-shadow"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="text">
+                                                            {{ efect.title }}
+                                                        </div>
+                                                        <div class="price">
+                                                            {{ efect.price }} <span class="Rial">ریال</span>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+                            <div class="d-flex">
+                                <div class="col-sm-12 text-center">
+                                    <ul class="pagination">
+                                        {% if page_obj.has_previous %}
+                                            <li><a class="page-link"
+                                                                     href="?page={{ page_obj.previous_page_number }}">قبلی</a>
+                                            </li>
+                                        {% endif %}
+
+                                        {% for page in paginator.page_range %}
+                                            {% if page == page_obj.number %}
+                                                <li class=""><a class="page-link bg-warning"
+                                                                                href="?page={{ page }}">{{ page }}</a>
+                                                </li>
+                                            {% else %}
+                                                <li><a class="page-link"
+                                                                         href="?page={{ page }}">{{ page }}</a></li>
+                                            {% endif %}
+                                        {% endfor %}
+
+                                        {% if page_obj.has_next %}
+                                            <li><a class="page-link"
+                                                                     href="?page={{ page_obj.next_page_number }}">بعدی</a>
+                                            </li>
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

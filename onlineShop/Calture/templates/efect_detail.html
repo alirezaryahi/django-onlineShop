@@ -1,0 +1,113 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+
+
+    <div class="container MainDiv">
+        <div class="col p-0">
+            <div class="box ProductDetails">
+                <div class="row ProductInfo">
+                    <div class="Image col-xl-3 col-lg-4 col-md-5 m-auto">
+
+                        <div class="book-wrap" title="Internet به زبان ساده">
+                            <img class="book-image" src="{{ effect.image.url }}"
+                                 alt="{{ effect.title }}">
+                        </div>
+                    </div>
+                    <div class="Details col-xl-9 col-lg-8 col-md-7 pt-0">
+                        <div class="ProductTitle">{{ effect.title }}</div>
+                        <div class="row">
+                            <div class="LightText col-auto mr-auto">
+                                دسته بندی:<a href="/arts/?efectID={{ effect.subject.id }}"
+                                             class="blue font-weight-bold HiddenLink">
+                                {{ effect.subject.title }}
+                            </a>
+                            </div>
+                        </div>
+                        <div class="Attributes">
+                            <div class="title">ویژگی‌های محصول:</div>
+                            <div class="Attribute">
+                                <div class="LightText pl-1">
+                                    کد کالا:
+                                </div>
+                                <div>
+                                    {{ effect.id }}
+                                </div>
+                            </div>
+                            <div class="Attribute">
+                                <div class="LightText pl-1">
+                                    تولید کننده:
+                                </div>
+                                <div>
+                                    <a href=""
+                                       class="HiddenLink blue text-bold">
+                                        {{ effect.producer.title }}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="AddProductToCart">
+                        <form action="/add_user_order" method="post">
+                            {% csrf_token %}
+                            <div class="LightText">قیمت محصول:</div>
+                            <div class="Price ">{{ effect.price }} <span class="Rial">ریال</span></div>
+                            <div class="AddToCart" data-id="34211">
+                                {{ new_order_form.product_id }}
+                                {{ new_order_form.product_title }}
+                                <button class="bg-transparent border-0 text-white" type="submit">
+                                    افزودن به سبد خرید
+                                    <div class="Icon">
+                                        <img src="{% static '/images/cart-add.svg' %}">
+                                    </div>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+                <div class="description">
+                    <div class="blue font-weight-bold">درباره کتاب:</div>
+                    <div align="justify"><br>{{ book.description }}<br></div>
+                </div>
+            </div>
+            <div class="ml-3 mr-3 mb-5 mt-5" id="BestSellingSlider">
+                <div class="row bg-white">
+                    <div class="MultiCarousel p-0" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"
+                         data-interval="1000">
+                        <div class="box-header d-flex">
+                            <div class="right-blue-border pull-right"></div>
+                            <div class="header mr-3">
+                                <div class="title">
+                                    محصولات مرتبط
+                                </div>
+                                <div class="subtitle">
+                                    شما می‌توانید محصولات مرتبط را مشاهده کنید.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="MultiCarousel-inner mt-4">
+                            {% for effect in related_effect %}
+                                <div class="item">
+                                    <div class="pad15 p-0">
+                                        <img src="{{ effect.image.url }}" alt="" width="165" height="130">
+                                        <h6>{{ effect.title }}</h6>
+                                        <p>ریال : {{ effect.price }}</p>
+                                        <a class="btn btn-block btn-success"
+                                           href="/arts/{{ effect.id }}/{{ effect.title.split|join:"_" }}">مشاهده</a>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <button class="btn btn-primary rightLst"><</button>
+                        <button class="btn btn-primary leftLst">></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'js/swiper-bundle.min.js' %}"></script>
+{% endblock %}

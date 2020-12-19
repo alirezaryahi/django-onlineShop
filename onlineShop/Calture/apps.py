@@ -1,5 +1,6 @@
 from django.apps import AppConfig
 
 
-class CaltureConfig(AppConfig):
+class ArtConfig(AppConfig):
     name = 'Calture'
+    verbose_name = 'ماژول آثار هنری'
