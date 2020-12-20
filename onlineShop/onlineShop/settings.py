@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django_render_partial',
 
     # our apps
-
+    'rest_framework',
     'Library',
     'Account',
     'Stationery',
