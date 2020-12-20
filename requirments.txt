@@ -2,3 +2,13 @@ django==3.1.3
 pillow
 django_render_partial
 sqlparse==0.4.1
+
+
+
+Or
+
+1.Create a virtual environtment - virtualenv env
+2.Activate VirtualENV - source env/bin/activate
+3.Run requirements.txt - pip3 install -r requirements.txt
+4.Run the Application - python3 manage.py runserver
+5.Go to - http://localhost:8000/
