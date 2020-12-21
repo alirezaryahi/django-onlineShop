@@ -10,7 +10,8 @@ from rest_framework.response import Response
 class AllCalture(generics.ListAPIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
     serializer_class = CaltureSerializer
-        def get_queryset(self):
+
+    def get_queryset(self):
         query = self.request.GET.get('q')
         if query:
             queryset = Effect.objects.filter(
