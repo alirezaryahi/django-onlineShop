@@ -10,6 +10,7 @@ from rest_framework.response import Response
 
 class AllBooks(generics.ListAPIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
+    queryset = Book.objects.all()
     serializer_class = LibrarySerializer
     filterset_fields = ['category', 'title', 'description']
     search_fields = ['category', 'title', 'description']

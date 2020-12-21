@@ -10,6 +10,7 @@ from rest_framework.response import Response
 
 class AllStationery(generics.ListAPIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
+    queryset = Stationery.objects.all()
     serializer_class = StationerySerializer
     filterset_fields = ['group', 'title', 'description']
     search_fields = ['group', 'title', 'description']

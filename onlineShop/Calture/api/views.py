@@ -10,6 +10,7 @@ from rest_framework.response import Response
 
 class AllCalture(generics.ListAPIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
+    queryset = Effect.objects.all()
     serializer_class = CaltureSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['subject', 'title', 'description']
