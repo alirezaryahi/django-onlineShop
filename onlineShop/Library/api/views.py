@@ -5,6 +5,7 @@ from rest_framework import generics, status
 from .serializers import LibrarySerializer
 from Library.models import Book
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated, IsAdminUser
+from rest_framework.filters import SearchFilter
 from rest_framework.response import Response
 
 
@@ -12,7 +13,8 @@ class AllBooks(generics.ListAPIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
     queryset = Book.objects.all()
     serializer_class = LibrarySerializer
-    filterset_fields = ['category', 'title', 'description']
+    filter_backends = [SearchFilter, DjangoFilterBackend]
+    filterset_fields = ['category']
     search_fields = ['category', 'title', 'description']
     
     # def get_queryset(self):

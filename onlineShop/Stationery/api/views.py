@@ -2,6 +2,8 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
 from rest_framework import generics, status
 from django.db.models import Q
+from rest_framework.filters import SearchFilter
+
 from .serializers import StationerySerializer
 from Stationery.models import Stationery
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated, IsAdminUser
@@ -12,7 +14,8 @@ class AllStationery(generics.ListAPIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
     queryset = Stationery.objects.all()
     serializer_class = StationerySerializer
-    filterset_fields = ['group', 'title', 'description']
+    filter_backends = [SearchFilter, DjangoFilterBackend]
+    filterset_fields = ['group']
     search_fields = ['group', 'title', 'description']
     
     # def get_queryset(self):

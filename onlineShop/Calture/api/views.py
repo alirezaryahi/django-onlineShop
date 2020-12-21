@@ -5,6 +5,7 @@ from rest_framework import generics, status
 from .serializers import CaltureSerializer
 from Calture.models import Effect
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated, IsAdminUser
+from rest_framework.filters import SearchFilter
 from rest_framework.response import Response
 
 
@@ -12,8 +13,8 @@ class AllCalture(generics.ListAPIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
     queryset = Effect.objects.all()
     serializer_class = CaltureSerializer
-    filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['subject', 'title', 'description']
+    filter_backends = [SearchFilter, DjangoFilterBackend]
+    filterset_fields = ['subject']
     search_fields = ['subject', 'title', 'description']
 
     # def get_queryset(self):
