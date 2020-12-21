@@ -15,7 +15,7 @@ class AllCalture(generics.ListAPIView):
     serializer_class = CaltureSerializer
     filter_backends = [SearchFilter, DjangoFilterBackend]
     filterset_fields = ['subject']
-    search_fields = ['subject', 'title', 'description']
+    search_fields = ['title', 'description']
 
     # def get_queryset(self):
     #     query = self.request.GET.get('q')

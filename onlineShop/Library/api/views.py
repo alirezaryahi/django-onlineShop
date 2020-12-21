@@ -15,7 +15,7 @@ class AllBooks(generics.ListAPIView):
     serializer_class = LibrarySerializer
     filter_backends = [SearchFilter, DjangoFilterBackend]
     filterset_fields = ['category']
-    search_fields = ['category', 'title', 'description']
+    search_fields = ['title', 'description']
     
     # def get_queryset(self):
     #     query = self.request.GET.get('q')

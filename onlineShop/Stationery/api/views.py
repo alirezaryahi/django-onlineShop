@@ -16,7 +16,7 @@ class AllStationery(generics.ListAPIView):
     serializer_class = StationerySerializer
     filter_backends = [SearchFilter, DjangoFilterBackend]
     filterset_fields = ['group']
-    search_fields = ['group', 'title', 'description']
+    search_fields = ['title', 'description']
     
     # def get_queryset(self):
     #     query = self.request.GET.get('q')
