@@ -1,44 +1,43 @@
 from rest_framework.views import APIView
 from rest_framework import generics, status
+from django.db.models import Q
 from .serializers import StationerySerializer
 from Stationery.models import Stationery
-from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
 
 
 class AllStationery(generics.ListAPIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
-    queryset = Stationery.objects.all()
     serializer_class = StationerySerializer
+    
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        if query:
+            queryset = Stationery.objects.filter(
+                Q(group__title__icontains=query) |
+                Q(title__icontains=query) |
+                Q(description__icontains=query+' ')
+            )
+            return queryset
+        else:
+            return Stationery.objects.all()
 
-
-class UpdateStationery(generics.UpdateAPIView):
+class UpdateStationery(generics.RetrieveUpdateAPIView):
     permission_classes = [IsAuthenticated]
-
-    def get(self, request, pk):
-        query = Stationery.objects.get(pk=pk)
-        serializers = StationerySerializer(query)
-        return Response(serializers.data, status=status.HTTP_200_OK)
-
     queryset = Stationery.objects.all()
     serializer_class = StationerySerializer
     lookup_field = 'pk'
 
 
-class DeleteStationery(generics.DestroyAPIView):
+class DeleteStationery(generics.RetrieveDestroyAPIView):
     permission_classes = [IsAuthenticated]
-
-    def get(self, request, pk):
-        query = Stationery.objects.get(pk=pk)
-        serializers = StationerySerializer(query)
-        return Response(serializers.data, status=status.HTTP_200_OK)
-
     queryset = Stationery.objects.all()
     serializer_class = StationerySerializer
     lookup_field = 'pk'
 
 
 class PostStationery(generics.CreateAPIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAdminUser]
     queryset = Stationery.objects.all()
     serializer_class = StationerySerializer
