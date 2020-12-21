@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     # our apps
     'rest_framework',
+    'django_filters',
     'Library',
     'Account',
     'Stationery',
@@ -58,6 +59,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+}
 
 ROOT_URLCONF = 'onlineShop.urls'
 

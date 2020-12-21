@@ -1,4 +1,5 @@
-from rest_framework.views import APIView
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import filters
 from django.db.models import Q
 from rest_framework import generics, status
 from .serializers import CaltureSerializer
@@ -10,18 +11,21 @@ from rest_framework.response import Response
 class AllCalture(generics.ListAPIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
     serializer_class = CaltureSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['subject', 'title', 'description']
+    search_fields = ['subject', 'title', 'description']
 
-    def get_queryset(self):
-        query = self.request.GET.get('q')
-        if query:
-            queryset = Effect.objects.filter(
-                Q(subject__title__icontains=query) |
-                Q(title__icontains=query) |
-                Q(description__icontains=query+' ')
-            )
-            return queryset
-        else:
-            return Effect.objects.all()
+    # def get_queryset(self):
+    #     query = self.request.GET.get('q')
+    #     if query:
+    #         queryset = Effect.objects.filter(
+    #             Q(subject__title__icontains=query) |
+    #             Q(title__icontains=query) |
+    #             Q(description__icontains=query+' ')
+    #         )
+    #         return queryset
+    #     else:
+    #         return Effect.objects.all()
 
 
 class UpdateCalture(generics.RetrieveUpdateAPIView):
